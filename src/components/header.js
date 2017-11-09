@@ -10,21 +10,30 @@ export default class Header extends React.Component {
         super();
         this.state = {
             gamePlay: false,
+            // newGame: false,
         }
     }
 // if true, sets the view to the game play instructions
-    // setGamePlay(gamePlay) {
-    //     this.setState({
-    //         gamePlay
-    //     })
-    // }
+    displayGamePlay(gamePlay) {
+        this.setState({
+            gamePlay: !this.state.gamePlay
+        })
+    }
 
     render() {
+        let infoModal;
+        if(this.state.gamePlay) {
+            infoModal = <InfoModal onClick={() => this.displayGamePlay()}/>
+        }
+        
         // still need to add conditional for gamePlay instructions view
+        // if(!this.state.gamePlay) {
+        //     return 
+        // }
     return (
         <header>
             <TopNav />
-            {/* <InfoModal onClick={() => this.setGamePlay(true)}/> */}
+            { infoModal }
             <h1>HOT or COLD</h1>
         </header>
     );
