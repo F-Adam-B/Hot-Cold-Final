@@ -10,8 +10,7 @@ export default class Header extends React.Component {
         super();
         this.state = {
             gamePlay: false,
-            // newGame: false,
-        }
+           }
     }
 // if true, sets the view to the game play instructions
     displayGamePlay(gamePlay) {

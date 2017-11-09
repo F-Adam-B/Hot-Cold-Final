@@ -24,16 +24,54 @@ export default class Game extends React.Component {
             }
         }
 
+        guess() {
+            const guess = parseInt(guess, 10);
+            if (NaN(guess)) {
+            this.setState = ({
+                feedback: 'Guess must be a number',
+            })
+            return
+        };
+        const difference = Math.abs(guess - this.state.randomNumber);
+
+        if (difference >= 50) {
+            feedback = 'You\'re ice cold';
+        }
+        else if (difference >= 25) {
+            feedback = 'You\'re cold';
+        }
+        else if (difference >= 10) {
+            feedback = 'You\'re getting warmer';
+        }
+        else if (difference >= 5) {
+            feedback = 'You\'re hot';
+        }
+        else if (difference >= 1) {
+            feedback = 'You\'re red hot';
+        }
+        else {
+            feedback = 'You\'ve got it!';
+        }
+
+        this.setState({
+            feedback,
+            guesses: [...this.state.guesses, guess],
+        })
+         
+    }
+
+
 
     
     render() {
         // console.log(this.state)
     return (
         <div>
-            <Header />
-            <GuessSection feedback="Make your guess!" />
-            <GuessCount count={5} />
-            <GuessList guesses={[10, 15, 25]} />
+            <Header newGame={() => this.newGame()}/>
+            <GuessSection feedback={this.state.feedback}
+            onGuess={(guess) => this.guess(guess)} />
+            <GuessCount count={this.state.guesses.length} />
+            <GuessList guesses={this.state.guesses} />
         </div>
     );
 }
