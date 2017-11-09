@@ -8,10 +8,10 @@ export default function GuessList(props) {
             {guess}
         </li>
     ));
-
     return (
         <ul id="guessList" className="guessBox clearfix">
             {guesses}
         </ul>
     );
 };
+

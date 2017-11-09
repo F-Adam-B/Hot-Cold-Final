@@ -2,7 +2,17 @@ import React from 'react';
 
 import './info-modal.css';
 
-export default function InfoModal(props) {
+export default class InfoModal extends React.Component {
+
+    onClick(event){
+        event.preventDefault();
+            if(this.props.onClick){
+                this.props.onClick();
+            }
+        }
+
+
+    render() {
     return (
         <div className="overlay" id="modal">
             <div className="content">
@@ -15,9 +25,10 @@ export default function InfoModal(props) {
                         <li>3. You will <strong>get feedback</strong> on how close ("hot") or far ("cold") your guess is.</li>
                     </ul>
                     <p>So, Are you ready?</p>
-                    <a className="close" href="#">Got It!</a>
+                    <a className="close" href="#"  onClick={e => this.onClick(e)}>Got It!</a>
                 </div>
             </div>
         </div>
     );
+}
 }

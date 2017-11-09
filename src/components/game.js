@@ -9,18 +9,20 @@ export default class Game extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            count: 35,
-            guesses: 22,
-            // think the below two keys need to move
-            what: true,
-            newGame: true,
+            guesses: [],
+            feedback: 'Make your guess!',
             // need to create random function for when page loads
-            randomNumber: function getRandomNumber(min,max) {
-                return Math.random() * (1 - 100) + 1;
+            randomNumber: Math.floor(Math.random() * 100) + 1,
             }
         }
 
-    }
+        newGame() {
+            this.setState = {
+                guesses: [],
+                feedback: 'Make your guess!',
+                randomNumber: Math.floor(Math.random() * 100 + 1)
+            }
+        }
 
 
     
@@ -30,10 +32,10 @@ export default class Game extends React.Component {
         <div>
             <Header />
             <GuessSection feedback="Make your guess!" />
-            <GuessCount count={3} />
+            <GuessCount count={5} />
             <GuessList guesses={[10, 15, 25]} />
         </div>
     );
 }
-}
 
+}
